@@ -1,9 +1,3 @@
-# Load sad meow sound effect for player death
-try:
-    sad_meow = pygame.mixer.Sound('sad-meow-song.mp3')
-except:
-    print("Sad meow sound file not found")
-    sad_meow = None
 import cv2
 import mediapipe as mp
 import pygame
@@ -267,6 +261,13 @@ try:
 except:
     print("Luigi scream sound file not found")
     luigi_scream = None
+
+# Load sad meow sound effect for player death
+try:
+    sad_meow = pygame.mixer.Sound('sad-meow-song.mp3')
+except:
+    print("Sad meow sound file not found")
+    sad_meow = None
 
 # Initialize platforms list with more random variety
 def generate_random_platforms():
