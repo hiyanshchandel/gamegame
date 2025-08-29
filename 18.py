@@ -562,6 +562,12 @@ def check_platform_collisions(mario_rect, platforms):
 
 def reset_game():
     global mario_x, mario_y, mario_velocity_y, scroll_offset, on_ground, score, total_distance, platforms, obstacles, next_boss_spawn_score, bosses, fireballs, bullets, last_bullet_time, last_score, boss_warning_active, boss_warning_start_time
+    
+    # Stop all sounds and resume background music
+    if sad_meow:
+        sad_meow.stop()  # Stop the sad meow sound
+    pygame.mixer.music.unpause()  # Resume background music
+    
     mario_x, mario_y = mario_start_x, mario_start_y
     mario_velocity_y = 0
     scroll_offset = 0
@@ -825,6 +831,9 @@ while True:
 
             if mario_rect.colliderect(obstacle_rect):
                 game_over = True
+                pygame.mixer.music.pause()
+                if sad_meow:
+                    sad_meow.play()
 
             current_x = obstacles[i].x
             movement = obstacle_speeds[i] * obstacle_directions[i]
