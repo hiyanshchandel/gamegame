@@ -566,6 +566,10 @@ def reset_game():
     # Stop all sounds and resume background music
     if sad_meow:
         sad_meow.stop()  # Stop the sad meow sound
+    if luigi_scream:
+        luigi_scream.stop()  # Stop luigi scream if playing
+    if angry_sound:
+        angry_sound.stop()  # Stop angry sound if playing
     pygame.mixer.music.unpause()  # Resume background music
     
     mario_x, mario_y = mario_start_x, mario_start_y
